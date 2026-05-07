@@ -10,7 +10,7 @@ class CreateOrders < ActiveRecord::Migration[8.1]
 
       t.timestamps
     end
-    
+
     add_index :orders, :external_id, unique: true
   end
 end

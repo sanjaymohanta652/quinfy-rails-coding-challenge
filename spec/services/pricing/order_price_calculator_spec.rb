@@ -37,7 +37,7 @@ RSpec.describe Pricing::OrderPriceCalculator do
         order.order_items.create!(
           name: "Margherita",
           size: "Large",
-          add_ingredients: ["Cheese"],
+          add_ingredients: [ "Cheese" ],
           remove_ingredients: []
         )
       end
@@ -50,7 +50,7 @@ RSpec.describe Pricing::OrderPriceCalculator do
     end
 
     context "when applying promotion codes" do
-      let(:promotion_codes) { ["2FOR1"] }
+      let(:promotion_codes) { [ "2FOR1" ] }
 
       before do
         2.times do
