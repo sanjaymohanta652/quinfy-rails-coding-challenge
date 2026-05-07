@@ -1,2 +1,24 @@
-# quinfy-rails-coding-challenge
-This repository for the coding challenge of Quinfy Technology. In this repository there is a small project of creating order of a pizza shop and calculating the bill according to the order.
+# README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
