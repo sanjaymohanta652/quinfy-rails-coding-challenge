@@ -1,0 +1,73 @@
+<h1>Orders</h1>
+
+<% @orders.each do |order| %>
+  <div style="border-top: 1px solid black; padding: 20px 0;">
+    <div style="display: flex; justify-content: space-between; gap: 40px;">
+      
+      <div style="width: 40%;">
+        <p>
+          ID: <%= order.external_id %>
+        </p>
+
+        <p>
+          Created:
+          <%= order.ordered_at.strftime("%B %d, %Y %H:%M") %>
+        </p>
+
+        <p>
+          Promotion Codes:
+          <%= order.promotion_codes.presence&.join(", ") || "-" %>
+        </p>
+
+        <p>
+          Discount Codes:
+          <%= order.discount_code || "-" %>
+        </p>
+
+        <br>
+
+        <p>
+          <strong>
+            Total Price:
+            <%= format("$%.2f", order.calculated_total_price) %>
+          </strong>
+        </p>
+
+        <%= button_to "Complete",
+              order_path(order),
+              method: :patch %>
+      </div>
+
+      <div style="width: 60%;">
+        <strong>Items:</strong>
+
+        <ul>
+          <% order.order_items.each do |item| %>
+            <li style="margin-bottom: 10px;">
+              <%= item.name %> (<%= item.size %>)
+
+              <% if item.add_ingredients.any? %>
+                <ul>
+                  <li>
+                    Add:
+                    <%= item.add_ingredients.join(", ") %>
+                  </li>
+                </ul>
+              <% end %>
+
+              <% if item.remove_ingredients.any? %>
+                <ul>
+                  <li>
+                    Remove:
+                    <%= item.remove_ingredients.join(", ") %>
+                  </li>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+<% end %>
